@@ -27,14 +27,21 @@ public class PiGenerator {
      * @return a^b mod m
      */
     public static int powerMod(int a, int b, int m) {
-    	if ((a > 0) && (b > 0) && (m > 0)) {
-    		int answer = a;
-    		for (int i = 1; i < b; i++) {
-    			answer = answer * a;
-    			
+    	if ((a > -1) && (b > -1) && (m > 0)) {
+    		int answer = 0;
+    		if (a > 0) {
+    			if (b > 0) {
+	    			answer = a;
+	    			for (int i = 1; i < b; i++) {
+	    				answer = answer * a;    			
+	    			}
+    			}
+    			else {
+    				answer = 1;
+    			}
     		}
-    		return answer % m;
-    	}
+        	return answer % m;
+    	}    	
     	return -1;
     }
 
