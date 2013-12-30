@@ -27,9 +27,17 @@ public class PiGenerator {
      * @return a^b mod m
      */
     public static int powerMod(int a, int b, int m) {
-        // TODO: Implement (Problem 1.b)
-        return -1;
+    	if ((a > 0) && (b > 0) && (m > 0)) {
+    		int answer = a;
+    		for (int i = 1; i < b; i++) {
+    			answer = answer * a;
+    			
+    		}
+    		return answer % m;
+    	}
+    	return -1;
     }
+
     
     /**
      * Computes the nth digit of Pi in base-16.
@@ -40,7 +48,8 @@ public class PiGenerator {
      * @return The nth digit of Pi in base-16.
      */
     public static int piDigit(int n) {
-        if (n < 0) return -1;
+        //System.out.println(n);
+    	if (n < 0) return -1;
         
         n -= 1;
         double x = 4 * piTerm(1, n) - 2 * piTerm(4, n) -
