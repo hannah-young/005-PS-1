@@ -30,13 +30,20 @@ public class PiGeneratorTest {
     
     @Test
     public void computePiIntoHexTest() {
-    	assertEquals(3, PiGenerator.piDigit(0));
-    	assertEquals(2, PiGenerator.piDigit(1));
-    	assertEquals(4, PiGenerator.piDigit(2));
-    	assertEquals(3, PiGenerator.piDigit(3));
-    	assertEquals(15, PiGenerator.piDigit(4));
-    	assertEquals(6, PiGenerator.piDigit(5));
-    	assertEquals(10, PiGenerator.piDigit(6));
+    	// Edge Cases
+    	int[] testArray = new int[0];
+    	assertArrayEquals(testArray, PiGenerator.computePiInHex(0));
+    	testArray = new int[1];
+    	testArray[0] = 2;
+    	assertArrayEquals(testArray, PiGenerator.computePiInHex(1));
+    	
+    	// Middle cases
+    	testArray = new int[4];
+    	testArray[0] = 2; testArray[1] = 4; testArray[2] = 3; testArray[3] = 15; 
+    	assertArrayEquals(testArray, PiGenerator.computePiInHex(4));
+
+    	// Invalid cases
+    	assertNull(PiGenerator.computePiInHex(-1));
     	
     }
 
