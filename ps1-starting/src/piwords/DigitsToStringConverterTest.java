@@ -19,5 +19,34 @@ public class DigitsToStringConverterTest {
                              input, 4, alphabet));
     }
 
-    // TODO: Write more tests (Problem 3.a)
+    @Test
+    public void nullNumberSerializerTest() {
+    	char[] alphabet = {'d', 'c', 'b', 'a'};    	     
+        
+        // digit > base
+    	int[] input1 = {0, 1, 2, 6};
+        assertNull(DigitsToStringConverter.convertDigitsToString(input1, 4, alphabet));
+        
+        // digit < 0
+        int[] input2 = {0, -3, 2, 3};        
+        assertNull(DigitsToStringConverter.convertDigitsToString(input2, 4, alphabet));
+        
+        // alphabet.length != base
+        int[] input3 = {0, 3, 2, 3};
+        assertNull(DigitsToStringConverter.convertDigitsToString(input3, 5, alphabet));       
+        
+    }
+    
+    @Test
+    public void edgeNumberSerializerTest() {
+    	// Beginning and end of character map/base
+    	int[] input1 = {0, 3, 5, 6, 7, 7};
+    	char[] alphabet1 = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+    	assertEquals("adfghh", DigitsToStringConverter.convertDigitsToString(input1, 8, alphabet1));
+    	
+    	// No digits
+    	int[] input2 = {};
+    	assertEquals("", DigitsToStringConverter.convertDigitsToString(input2, 8, alphabet1));
+    	
+    }
 }
