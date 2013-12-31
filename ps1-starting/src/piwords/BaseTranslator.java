@@ -1,5 +1,7 @@
 package piwords;
 
+import java.util.Arrays;
+
 public class BaseTranslator {
     /**
      * Converts an array where the ith digit corresponds to (1 / baseA)^(i + 1)
@@ -33,7 +35,27 @@ public class BaseTranslator {
      */
     public static int[] convertBase(int[] digits, int baseA,
                                     int baseB, int precisionB) {
-        // TODO: Implement (Problem 2.b)
-        return null;
+    	// Check for invalid inputs
+    	if (baseA < 2 || baseB < 2 || precisionB < 1) { return null; }
+    	for (int z = 0; z < digits.length; z++) { if (digits[z] < 0 || digits[z] > baseA) { return null; }}
+    	
+    	// Base converter algorithm
+    	int[] output = new int[precisionB];
+    	int[] input = digits.clone();
+    	for (int i = 0; i < precisionB; i++) {
+    		int carry = 0;
+    		int x;
+    		int j;
+    		for (int k = 0; k < input.length; k++) {
+    			j = input.length - 1 - k;
+    			x = input[j] * baseB + carry;
+    			input[j] = x % baseA;
+    			carry = x / baseA;
+    		}
+    		output[i] = carry;
+    		}
+    	return output;
     }
+    	
 }
+
