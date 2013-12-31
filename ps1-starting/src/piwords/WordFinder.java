@@ -19,7 +19,14 @@ public class WordFinder {
      */
     public static Map<String, Integer> getSubstrings(String haystack,
                                                      String[] needles) { 
-        // TODO: Implement (Problem 4.b)
-        return new HashMap<String, Integer>();
+        Map<String, Integer> output = new HashMap<String, Integer>();
+        for (int i = 0; i < needles.length; i++) {
+        	for (int k = 0; k <= (haystack.length() - needles[i].length()); k++) {
+        		if (needles[i].equals(haystack.substring(k, k + needles[i].length()))) {
+        			output.put(needles[i], k);
+        		}
+        	}
+        }
+    return output;
     }
 }
